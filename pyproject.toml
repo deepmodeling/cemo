@@ -1,0 +1,30 @@
+[project]
+name = "cemo"
+version = "0.1.4"
+description = "cemo: a python library for operations on cryo-EM data"
+requires-python = ">=3.7"
+authors = [
+    {name = "Yuhang (Steven) Wang"},
+]
+dependencies = [
+    "mrcfile",
+    "starfile",
+    "numpy",
+    "matplotlib",
+]
+
+[project.scripts]
+cemo = "cemo.cli:main"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = [
+    "cemo",
+    "cemo.*",
+]
