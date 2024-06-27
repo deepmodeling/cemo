@@ -1,0 +1,29 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  default:
+    cmds:
+      - echo "{{.GREETING}}"
+    silent: true
+
+  prep:
+    cmds:
+      - >
+        python bin/make_answers.py
+
+  t:
+    cmds:
+      - mkdir -p tmp/
+      - >
+        pytest -svvx test_{{.id}}.py
+    vars:
+      id: "{{.CLI_ARGS}}"
+  
+  a:
+    cmds:
+      - pytest -svvx .

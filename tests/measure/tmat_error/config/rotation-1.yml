@@ -1,0 +1,22 @@
+env:
+  eman2: /Users/steven/install/eman2/2.91/bin
+  e2proc3d: tmp/bin/e2proc3d_yhw.py
+
+files:
+  - input:
+      ref: tmp/ground-truth/7sf7/7sf7_res2.0_box160.mrc 
+      target: tmp/benchmark/7sf7/7sf7_snr1.6_no-ctf_5k_volume_new_origin.mrc
+      data: tmp/data/7sf7/sim-7sf7-snr1.6_cryonerf_20220711-180213_rotmat.pkl
+      mirror-rotmat: "config/mirror_z.txt"
+    output:
+      align:
+        tmat: tmp/benchmark/7sf7/7sf7_snr1.6_no-ctf_5k_volume_aligned_rotmat.txt
+        volume: tmp/benchmark/7sf7/7sf7_snr1.6_no-ctf_5k_volume_aligned.mrc
+      rotation:
+        data: tmp/data/7sf7/sim-7sf7-snr1.6_cryonerf_20220711-180213_rotmat_error.txt
+        fig: 
+          file: tmp/data/7sf7/sim-7sf7-snr1.6_cryonerf_20220711-180213_pose_error.png
+          bins: 10
+          title: sim-7sf7-snr1.6_cryonerf_20220711-180213
+          x-label: Angle prediction error (log10)
+          y-label: Counts

@@ -1,0 +1,31 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  default:
+    cmds:
+      - echo "{{.GREETING}}"
+    silent: true
+
+  1:
+    cmds:
+      - pytest test_1.py -s
+  
+  2:
+    cmds:
+      - pytest test_2.py -s 
+  3:
+    cmds:
+      - pytest test_3.py -s 
+  
+  cmd1:
+    cmds:
+      - pytest test_cmd_1.py -s
+  all:
+    cmds:
+      - pytest . -s
+

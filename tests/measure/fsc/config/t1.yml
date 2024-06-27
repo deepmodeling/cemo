@@ -1,0 +1,14 @@
+env:
+  eman2: /Users/steven/install/eman2/2.91/bin
+  e2proc3d: tmp/bin/e2proc3d_yhw.py
+
+files:
+  - input:
+      ref: tmp/ground-truth/7sf7/7sf7_res2.0_box160.mrc
+      target: tmp/benchmark/7sf7/7sf7_snr1.6_no-ctf_5k_volume_aligned.mrc
+      fsc_std: 0.5
+    output:
+      data: 
+        freq: tmp/benchmark/7sf7/7sf7_snr1.6_no-ctf_5k_pred_vs_truth_freq_fsc.data
+        res: tmp/benchmark/7sf7/7sf7_snr1.6_no-ctf_5k_pred_vs_truth_res_fsc.data
+      fig: tmp/benchmark/7sf7/7sf7_snr1.6_no-ctf_5k_pred_vs_gt_fsc.png

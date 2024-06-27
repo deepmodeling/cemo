@@ -1,0 +1,27 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  default:
+    cmds:
+      - echo "{{.GREETING}}"
+    silent: true
+
+  t:
+    cmds:
+      - pytest -svvx test_{{.CLI_ARGS}}.py
+
+  a:
+    cmds:
+      - pytest -svvx .
+
+  p:
+    cmds:
+      - rm -rf tmp/log/prof{{.CLI_ARGS}}}
+      - mkdir -p tmp/log/
+      - python prof_{{.CLI_ARGS}}.py
+

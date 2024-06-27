@@ -1,0 +1,48 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  default:
+    cmds:
+      - echo "{{.GREETING}}"
+    silent: true
+
+
+  ind:
+    cmds:
+      - >
+        python bin/mk_ind.py
+
+  t:
+    cmds:
+      - >
+        python bin/mk_star_subset.py
+        -i {{.input}}
+        -o {{.output}}
+        --ind {{.ind}}
+        --mrcs-file {{.mrcs}}
+      - >
+        sdiff -s 
+        {{.output}}
+        {{.expect}}
+
+    vars:
+      input: data/80s_10028_d128_downsample.star
+      output: tmp/t1.star
+      expect: expect/t1.star
+      ind: data/ind1.pkl
+      mrcs: data/80s_10028_d128_downsample.mrcs
+
+  update:
+    cmds:
+      - >
+        cp {{.local}} {{.dest}}
+    vars:
+      local: bin/mk_star_subset.py
+      dest: ../../../scripts
+
+    

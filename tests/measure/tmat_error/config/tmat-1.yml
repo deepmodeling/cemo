@@ -1,0 +1,30 @@
+env:
+  eman2: /Users/steven/install/eman2/2.91/bin
+  e2proc3d: tmp/bin/e2proc3d_yhw.py
+
+files:
+  - input:
+      ref: tmp/ground-truth/5nrl/5nrl-cen-res6-apix4.25-d128_origin.mrc
+      target: tmp/run/v2/e2e/5nrl/5nrl_snr_200dB_ctf_50k_voxel-grid/5nrl_snr_200dB_ctf_50k_voxel-grid_80ep.mrc
+      data: tmp/run/v2/e2e/5nrl/5nrl_snr_200dB_ctf_50k_voxel-grid/5nrl_snr_200dB_ctf_50k_voxel-grid_results.pkl
+      mirror-rotmat: ""
+    output:
+      align:
+        tmat: tmp/run/v2/e2e/5nrl/5nrl_snr_200dB_ctf_50k_voxel-grid/5nrl_snr_200dB_ctf_50k_voxel-grid_align_tmat.txt
+        volume: tmp/run/v2/e2e/5nrl/5nrl_snr_200dB_ctf_50k_voxel-grid/5nrl_snr_200dB_ctf_50k_voxel-grid_align.mrc
+      rotation:
+        data: tmp/run/v2/e2e/5nrl/5nrl_snr_200dB_ctf_50k_voxel-grid/5nrl_snr_200dB_ctf_50k_voxel-grid_rotation_error.txt
+        fig: 
+          file: tmp/run/v2/e2e/5nrl/5nrl_snr_200dB_ctf_50k_voxel-grid/5nrl_snr_200dB_ctf_50k_voxel-grid_rotation_error.png
+          bins: 10
+          title: 5nrl_snr_200dB_ctf_50k_voxel-grid
+          x-label: Angle prediction error (log10)
+          y-label: Counts
+      shift:
+        data: tmp/run/v2/e2e/5nrl/5nrl_snr_200dB_ctf_50k_voxel-grid/5nrl_snr_200dB_ctf_50k_voxel-grid_shift_error.txt
+        fig: 
+          file: tmp/run/v2/e2e/5nrl/5nrl_snr_200dB_ctf_50k_voxel-grid/5nrl_snr_200dB_ctf_50k_voxel-grid_shift_error.png
+          bins: 10
+          title: 5nrl_snr_200dB_ctf_50k_voxel-grid
+          x-label: Shift prediction error (log10)
+          y-label: Counts

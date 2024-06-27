@@ -1,0 +1,53 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  mrc:
+    cmds:
+      - mkdir -p input/
+      - >
+        python 
+        bin/make_mrc.py
+        -x {{.x_len}}
+        -y {{.y_len}}
+        -z {{.z_len}}
+        -o {{.f_out}}
+    vars:
+      x_len: 10
+      y_len: 20
+      z_len: 30
+      f_out: input/test_{{.x_len}}x{{.y_len}}x{{.z_len}}.mrc
+    
+  t1:
+    cmds:
+      - mkdir -p tmp/
+      - >
+        mrco 
+        trim
+        -i {{.in_mrc}}
+        -o {{.out_mrc}}
+        --x0 {{.x0}}
+        --x1 {{.x1}}
+        --y0 {{.y0}}
+        --y1 {{.y1}}
+        --y0 {{.y0}}
+        --y1 {{.y1}}
+        --z0 {{.z0}}
+        --z1 {{.z1}}
+      # - mrcfile-header {{.out_mrc}}
+    vars:
+      in_mrc: input/test_10x20x30.mrc
+      out_mrc: tmp/out_1.mrc
+      x0: 4
+      x1: 4
+      y0: 4
+      y1: 4
+      z0: 4
+      z1: 4
+
+
+    
